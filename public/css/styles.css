@@ -1,6 +1,226 @@
-/******* Change Box Model ***************/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+}
+
+:root {
+  --ice-cold: #a0d2eb;
+  --freeze-purple: #e5eaf5;
+  --medium-purple: #d0bdf4;
+  --purple-pain: #8458B3;
+  --heavy-purple: #a28089;
+
+  --background-color: var(--freeze-purple);
+  --secondary-color: var(--purple-pain);
+  --accent-color: var(--ice-cold);
+  --highlight-color: var(--medium-purple);
+  --other-color: var(--heavy-purple);
+}
+
+/* Header */
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.siteName a {
+  font-size: 2rem;
+  text-decoration: none;
+  color: black;
+}
+
+#tools a {
+  text-decoration: none;
+  color: black;
+}
+
+/* Navigation */
+nav {
+  background-color:var(--secondary-color) ;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 20px;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: white;
+}
+nav ul li a:hover {
+  color: var(--ice-cold);
+}
+
+li {
+  text-decoration: none;
+}
+
+/* Body */
+body {
+padding: 10px;
+}
+
+.car-card {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  padding-left: 0;
+  margin-bottom: 4rem;
+}
+
+/* Car image */
+.car-card img {
+  width: 100%;
+  display: block;
+}
+
+/* Overlay box - mobile default */
+.car-card .overlay {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  background: rgba(209, 221, 228, 0.85);
+  padding: 1.2rem;
+  max-width: 50%;
+  color: var(--other-color);
+  border-radius: 5px;
+  margin-left: 5%;
+  min-height: 120px;
+}
+
+/* Overlay heading */
+.car-card .overlay h2 {
+  color: var(--other-color);
+  margin: 0 0 0.5rem 0;
+}
+.car-card .overlay p {
+  font-size: medium;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Button styling */
+.car-card .overlay button {
+  margin-top: 0.5rem;
+  background: var(--other-color);
+  color: black;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+  align-items: center;
+  display: block;
+  margin: 0.5rem auto 0 auto;
+}
+
+/* overlay button hover */
+.car-card .overlay button:hover {
+  background: var(--highlight-color);
+}
+
+.upgrades-reviews-container {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+
+.quad-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  justify-items: start;
+}
+.reviews-section ul {
+  line-height: 2;
+  font-weight: 600;
+  text-align: left;
+  padding-left: 1rem;
+  margin-left: 0;
+}
+.quad-view > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+}
+
+.quad-view > div img {
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: contain;
+  background-color: var(--ice-cold);
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.quad-view > div a {
+  color: var(--purple-pain);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+
+@media (min-width: 900px) {
+  body {
+    background-image: url(../images/site/small_check.jpg);
+  }
+
+  #wrapper  {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    /* height: 100vh; */
+    background-color: white;
+    margin-top: 100px;
+    border: 10px solid var(--heavy-purple);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  /* Desktop car card override */
+  .car-card {
+    max-width: 600px;
+    padding-left: 20%;
+    margin-bottom: 0;
+  }
+
+  /* Desktop overlay override */
+  .car-card .overlay {
+    top: 20px;
+    left: 20px;
+    padding: 1rem;
+    max-width: 40%;
+    margin-left: 8%;
+    min-height: auto;
+  }
+
+  .car-card .overlay p {
+    font-size: larger;
+    line-height: 0.5;
+  }
+
+  .upgrades-reviews-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+    gap: 2rem;
+  }
+  
+  .upgrades-section {
+    flex: 1;
+  }
+  
+  .reviews-section {
+    flex: 1;
+  }
 }
