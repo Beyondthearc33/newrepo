@@ -1,0 +1,19 @@
+<!-- <div class="error">
+    <% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+    } %>
+    <img src="/images/other/jurassicError.jpg" alt="">
+    <%= message %>
+</div> -->
+
+<div class="error">
+  <h1><%= title || "Oops! Something went wrong." %></h1>
+
+  <img src="/images/other/jurassicError.jpg" alt="Funny Error Image">
+
+  <p><%- message || "We couldn't find what you were looking for." %></p>
+
+  <a href="/" class="btn">Return Home</a>
+</div>

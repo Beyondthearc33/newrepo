@@ -8,7 +8,7 @@
   --ice-cold: #a0d2eb;
   --freeze-purple: #e5eaf5;
   --medium-purple: #d0bdf4;
-  --purple-pain: #8458B3;
+  --purple-pain: #8458b3;
   --heavy-purple: #a28089;
 
   --background-color: var(--freeze-purple);
@@ -38,7 +38,7 @@
 
 /* Navigation */
 nav {
-  background-color:var(--secondary-color) ;
+  background-color: var(--secondary-color);
 }
 
 nav ul {
@@ -63,7 +63,7 @@ li {
 
 /* Body */
 body {
-padding: 10px;
+  padding: 10px;
 }
 
 .car-card {
@@ -80,7 +80,7 @@ padding: 10px;
   display: block;
 }
 
-/* Overlay box - mobile default */
+/* Overlay box */
 .car-card .overlay {
   position: absolute;
   top: 15px;
@@ -169,6 +169,113 @@ padding: 10px;
   font-weight: 500;
 }
 
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.error img {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
+
+/* Inventory css */
+#inv-display {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* Individual card */
+#inv-display li.happy {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--other-color);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: box-shadow 0.2s ease;
+  min-height: 250px;
+}
+
+/* Hover effect */
+#inv-display li.happy:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Image styling */
+#inv-display li.happy img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+
+.namePrice {
+  padding: 10px 15px;
+  flex: 1;
+}
+
+.namePrice h2 {
+  margin: 0 0 5px 0;
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+}
+
+.namePrice h2 a {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+
+.namePrice span {
+  font-weight: bold;
+  color: var(--accent-color);
+  font-size: 1rem;
+}
+
+/* Inventory detail css */
+#container-item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+}
+
+#inv-detail-img img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+#item-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#item-info-list li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.item-header {
+  font-weight: bold;
+}
 
 @media (min-width: 900px) {
   body {
@@ -179,11 +286,11 @@ padding: 10px;
     margin-top: 20px;
   }
 
-  #wrapper  {
+  #wrapper {
     margin-left: auto;
     margin-right: auto;
     width: 80%;
-    /* height: 100vh; */
+
     background-color: white;
     margin-top: 100px;
     border: 10px solid var(--heavy-purple);
@@ -191,14 +298,12 @@ padding: 10px;
     padding: 2rem;
   }
 
-  /* Desktop car card override */
   .car-card {
     max-width: 600px;
     padding-left: 20%;
     margin-bottom: 0;
   }
 
-  /* Desktop overlay override */
   .car-card .overlay {
     top: 20px;
     left: 20px;
@@ -219,12 +324,52 @@ padding: 10px;
     margin-top: 30px;
     gap: 2rem;
   }
-  
+
   .upgrades-section {
     flex: 1;
   }
-  
+
   .reviews-section {
     flex: 1;
   }
+
+  #inv-display {
+    gap: 20px;
+  }
+
+  /* Inventory css */
+  #inv-display {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  #inv-display li.happy {
+    flex-direction: row;
+    align-items: center;
+    padding: 15px;
+    min-height: 200px;
+  }
+
+  #inv-display li.happy img {
+    max-width: 150px;
+    margin: 0;
+    margin-right: 15px;
+  }
+
+  .namePrice {
+    flex: 1;
+    padding: 0;
+  }
+}
+
+/* Inventory detail css */
+#container-item-details {
+  flex-direction: row;
+}
+
+#inv-detail-img {
+  flex: 1;
+}
+
+#item-info {
+  flex: 2;
 }
