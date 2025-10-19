@@ -238,7 +238,7 @@ body {
 
 .namePrice span {
   font-weight: bold;
-  color: var(--accent-color);
+  color: black;
   font-size: 1rem;
 }
 

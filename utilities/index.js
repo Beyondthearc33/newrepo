@@ -88,14 +88,13 @@ Util.buildInventoryDetail = async function (data) {
   } else {
     detail = '<div id="container-item-details">';
     detail += '<div id="inv-detail-img">';
-    detail += '<img src="' + data[0].inv_image + '" alt="Image of "';
-    data[0].inv_make + " " + data[0].inv_model + '"on CSE Motors" >';
+    detail += '<img src="' + data[0].inv_image + '" alt="Image of ' + data[0].inv_make + ' ' + data[0].inv_model + ' on CSE Motors">';
     detail += "<hr id='details-divider'>";
     detail += "</div>";
     detail += '<div id="item-info">';
     detail += '<ul id="item-info-list">';
     detail += '<li id="item-price"><span class="item-header">Price: </span>$' +
-    new Intl.NumberFormat("en-US").format(data[0].inv_price) + "</li>";
+      new Intl.NumberFormat("en-US").format(data[0].inv_price) + "</li>";
     detail +=
       '<li id="item-detail-desc"> <span class="item-header"> Description: </span>' +
       data[0].inv_description +
