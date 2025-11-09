@@ -1,0 +1,61 @@
+<!-- <%- include('../partials/header') %> -->
+
+<div class="account-container">
+  <h1 class="account-title"><%= title %></h1>
+
+  <div class="flash-message"><%- messages() %></div>
+
+  <% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+  <form method="post" action="/account/register" class="account-form">
+    <label for="account_firstname">First Name:</label>
+    <input
+      type="text"
+      id="firstname"
+      name="account_firstname"
+      required
+      value="<%= locals.account_firstname %>"
+    />
+    <label for="account_lastname">Last Name:</label>
+    <input
+      type="text"
+      id="lastname"
+      name="account_lastname"
+      required
+      value="<%= locals.account_lastname %>"
+    />
+
+    <label for="account_email">Email Address:</label>
+    <input
+      type="email"
+      id="email"
+      name="account_email"
+      required
+      value="<%= locals.account_email %>"
+    />
+
+     <label for="account_password">Password:</label>
+  <div class="password-requirements">
+    Passwords must be at least <strong>12 characters</strong> long and include
+    <strong>1 uppercase letter</strong>, <strong>1 number</strong>, and
+    <strong>1 special character</strong>.
+  </div>
+  <input 
+    type="password" 
+    id="account_password" 
+    name="account_password" 
+    required
+    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+    title="Password must be at least 12 characters long, include one uppercase letter, one lowercase letter, one number, and one special character."
+  />
+    <button type="submit">Register</button>
+  </form>
+</div>
+
+<!-- <%- include('../partials/footer') %> -->
