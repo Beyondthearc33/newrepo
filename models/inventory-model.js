@@ -110,5 +110,61 @@ async function addInventory(data) {
   }
 }
 
+async function updateInventory(invData) {
+  const sql = `
+    UPDATE inventory
+    SET inv_make = $1,
+        inv_model = $2,
+        inv_year = $3,
+        inv_description = $4,
+        inv_image = $5,
+        inv_thumbnail = $6,
+        inv_price = $7,
+        inv_miles = $8,
+        inv_color = $9,
+        classification_id = $10
+    WHERE inv_id = $11
+    RETURNING *
+  `
+  const data = await pool.query(sql, [
+    invData.inv_make,
+    invData.inv_model,
+    invData.inv_year,
+    invData.inv_description,
+    invData.inv_image,
+    invData.inv_thumbnail,
+    invData.inv_price,
+    invData.inv_miles,
+    invData.inv_color,
+    invData.classification_id,
+    invData.inv_id
+  ])
+  return data.rowCount
+}
 
-module.exports = {getClassifications, getInventoryByClassificationId, getDetailByInventoryId, checkExistingClassification, addClassification, addInventory }
+/* ***************************
+ *  Get Inventory Item by inv_id
+ * ************************** */
+async function getInventoryById(inv_id) {
+  try {
+    const data = await pool.query(
+      "SELECT * FROM public.inventory WHERE inv_id = $1",
+      [inv_id]
+    )
+    return data.rows[0]
+  } catch (error) {
+    console.error("getInventoryById error:", error)
+    throw error
+  }
+}
+
+/* ***************************
+ *  Delete Inventory Item
+ * ************************** */
+async function deleteInventoryItem(inv_id) {
+  const sql = "DELETE FROM public.inventory WHERE inv_id = $1"
+  const data = await pool.query(sql, [inv_id])
+  return data.rowCount
+}
+
+module.exports = {getClassifications, getInventoryByClassificationId, getDetailByInventoryId,  getInventoryById, checkExistingClassification, addClassification, addInventory, updateInventory, deleteInventoryItem}

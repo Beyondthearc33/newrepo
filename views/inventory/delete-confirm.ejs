@@ -1,0 +1,47 @@
+<%- include('../partials/header') %>
+
+<div class="inv-add-inventory">
+  <h1><%= title %></h1>
+
+  <div class="flash-message"><%- messages() %></div>
+
+  <% 
+    const errorList = Array.isArray(errors)
+      ? errors
+      : (errors && typeof errors.array === "function" ? errors.array() : [])
+  %>
+
+  <% if (errorList.length) { %>
+    <ul class="notice" aria-live="polite">
+      <% errorList.forEach(err => { %>
+        <li><%= err.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <p>Confirm Deletion - The delete is permanent.</p>
+
+  <form method="post" action="/inv/delete" class="inv-form">
+    <fieldset>
+      <legend>Delete Vehicle</legend>
+
+      <input type="hidden" name="inv_id" value="<%= inv_id %>">
+
+      <label for="inv_make">Make</label>
+      <input id="inv_make" name="inv_make" readonly value="<%= inv_make %>">
+
+      <label for="inv_model">Model</label>
+      <input id="inv_model" name="inv_model" readonly value="<%= inv_model %>">
+
+      <label for="inv_year">Year</label>
+      <input id="inv_year" name="inv_year" readonly value="<%= inv_year %>">
+
+      <label for="inv_price">Price (USD)</label>
+      <input id="inv_price" name="inv_price" readonly value="<%= inv_price %>">
+    </fieldset>
+
+    <button type="submit" class="btn">Delete Vehicle</button>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

@@ -537,6 +537,27 @@ body {
   list-style-type: none;
 }
 
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+#inventoryDisplay thead {
+  background-color: #f4f4f4;
+}
+
+#inventoryDisplay tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
 @media (min-width: 900px) {
   body {
     background-image: url(../images/site/small_check.jpg);
